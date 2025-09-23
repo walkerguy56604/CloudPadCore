@@ -2,6 +2,21 @@
 <html>
 <head>
   <title>CloudPad Interactive</title>
+  <style>
+    #output {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      height: 150px;
+      overflow-y: auto;
+      font-family: monospace;
+      background: #f9f9f9;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+    }
+  </style>
 </head>
 <body>
   <h1>CloudPad Modules</h1>
@@ -10,6 +25,8 @@
   <button onclick="cloudLauncher()">Run Cloud Launcher</button>
   <button onclick="shareSheetUtility()">Run Share Sheet Utility</button>
   <button onclick="timedSnapshotTool()">Run Timed Snapshot Tool</button>
+
+  <div id="output">Module output will appear here...</div>
 
   <script src="cloudpad.js"></script>
 </body>
