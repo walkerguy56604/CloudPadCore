@@ -25,11 +25,20 @@
   <button onclick="cloudLauncher()">Run Cloud Launcher</button>
   <button onclick="shareSheetUtility()">Run Share Sheet Utility</button>
   <button onclick="timedSnapshotTool()">Run Timed Snapshot Tool</button>
+  <button onclick="runSequence()">Run All Modules in Sequence</button>
+  <button onclick="startAutoRun()">Start Auto-Run Timer</button>
   <button onclick="clearOutput()">Clear Output</button>
 
   <div id="output">Module output will appear here...</div>
 
   <script src="cloudpad.js"></script>
+  <script>
+    // Button to start auto-run without using console
+    function startAutoRun() {
+      const intervalSeconds = 30; // change this if you want a different timer
+      log(`Auto-run timer started: running modules every ${intervalSeconds} seconds.`);
+      autoRunModules(intervalSeconds);
+    }
+  </script>
 </body>
 </html>
-<button onclick="runSequence()">Run All Modules in Sequence</button>
