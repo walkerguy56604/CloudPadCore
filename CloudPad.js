@@ -1,72 +1,26 @@
-// ====== Helpers ======
-function log(message) {
-  const output = document.getElementById("output");
-  const timestamp = new Date().toLocaleTimeString();
-  output.innerHTML += `[${timestamp}] ${message}<br>`;
-  output.scrollTop = output.scrollHeight; // auto-scroll
-}
+let autoRunInterval;
+let countdown = 30; // 30 seconds
 
-function clearOutput() {
-  document.getElementById("output").innerHTML = "";
-}
+function startAutoRunTimer() {
+  clearInterval(autoRunInterval);
+  countdown = 30; // reset timer each time you start
 
-// ====== Your Modules ======
-function clipboardAssistant() {
-  log("Clipboard Assistant module executed.");
-  // Add your real logic here
-}
+  // Show initial countdown
+  document.getElementById("output").innerHTML = 
+    "Auto-Run will trigger in " + countdown + " seconds...";
 
-function cloudLauncher() {
-  log("Cloud Launcher module executed.");
-  // Add your real logic here
-}
+  autoRunInterval = setInterval(() => {
+    countdown--;
 
-function shareSheetUtility() {
-  log("Share Sheet Utility module executed.");
-  // Add your real logic here
-}
+    // Update the display
+    document.getElementById("output").innerHTML = 
+      "Auto-Run will trigger in " + countdown + " seconds...";
 
-function timedSnapshotTool() {
-  log("Timed Snapshot Tool module executed.");
-  // Add your real logic here
-}
-
-// ====== Run Sequence ======
-function runSequence() {
-  const modules = [
-    clipboardAssistant,
-    cloudLauncher,
-    shareSheetUtility,
-    timedSnapshotTool
-  ];
-
-  let delay = 0;
-  const interval = 1000; // 1 second between modules
-
-  modules.forEach((moduleFunc) => {
-    setTimeout(() => {
-      moduleFunc();
-    }, delay);
-    delay += interval;
-  });
-}
-
-// ====== Auto-run Timer (improved) ======
-let autoRunIntervalId = null;
-
-function autoRunModules(intervalSeconds = 30) {
-  // Run immediately once
-  runSequence();
-
-  // Clear any previous interval
-  if (autoRunIntervalId) clearInterval(autoRunIntervalId);
-
-  // Start new interval
-  autoRunIntervalId = setInterval(runSequence, intervalSeconds * 1000);
-}
-
-function startAutoRun() {
-  const intervalSeconds = 30;
-  log(`Auto-run timer started: running modules every ${intervalSeconds} seconds.`);
-  autoRunModules(intervalSeconds);
+    if (countdown <= 0) {
+      clearInterval(autoRunInterval);
+      runAllModules(); // trigger your modules
+      document.getElementById("output").innerHTML += 
+        "<br>✅ Auto-Run executed!";
+    }
+  }, 1000); // update every second
 }
