@@ -40,4 +40,21 @@ function shareSheetUtility() {
 function timedSnapshotTool() {
   log("Timed Snapshot Tool running!");
   // Add your timed snapshot logic here
-}
+function runSequence() {
+  const modules = [
+    clipboardAssistant,
+    cloudLauncher,
+    shareSheetUtility,
+    timedSnapshotTool
+  ];
+
+  let delay = 0;
+  const interval = 1000; // 1 second between modules
+
+  modules.forEach((moduleFunc) => {
+    setTimeout(() => {
+      moduleFunc();
+    }, delay);
+    delay += interval;
+  });
+}}
