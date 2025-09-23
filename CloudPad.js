@@ -1,45 +1,37 @@
+// ====== Helpers ======
 function log(message) {
-  const output = document.getElementById('output');
+  const output = document.getElementById("output");
   const timestamp = new Date().toLocaleTimeString();
   output.innerHTML += `[${timestamp}] ${message}<br>`;
-  output.scrollTop = output.scrollHeight; // Auto-scroll
+  output.scrollTop = output.scrollHeight; // auto-scroll
 }
 
 function clearOutput() {
-  const output = document.getElementById('output');
-  output.innerHTML = '';
+  document.getElementById("output").innerHTML = "";
 }
 
-// ==========================
-// Clipboard Assistant Module
-// ==========================
+// ====== Your Modules ======
 function clipboardAssistant() {
-  log("Clipboard Assistant running!");
-  // Add your clipboard logic here
+  log("Clipboard Assistant module executed.");
+  // Add your real logic here
 }
 
-// ==========================
-// Cloud Launcher Module
-// ==========================
 function cloudLauncher() {
-  log("Cloud Launcher running!");
-  // Add your cloud launcher logic here
+  log("Cloud Launcher module executed.");
+  // Add your real logic here
 }
 
-// ==========================
-// Share Sheet Utility Module
-// ==========================
 function shareSheetUtility() {
-  log("Share Sheet Utility running!");
-  // Add your share sheet code here
+  log("Share Sheet Utility module executed.");
+  // Add your real logic here
 }
 
-// ==========================
-// Timed Snapshot Tool Module
-// ==========================
 function timedSnapshotTool() {
-  log("Timed Snapshot Tool running!");
-  // Add your timed snapshot logic here
+  log("Timed Snapshot Tool module executed.");
+  // Add your real logic here
+}
+
+// ====== Run Sequence ======
 function runSequence() {
   const modules = [
     clipboardAssistant,
@@ -57,22 +49,10 @@ function runSequence() {
     }, delay);
     delay += interval;
   });
-}}
-function runSequence() {
-  const modules = [
-    clipboardAssistant,
-    cloudLauncher,
-    shareSheetUtility,
-    timedSnapshotTool
-  ];
+}
 
-  let delay = 0;
-  const interval = 1000; // 1 second between modules
-
-  modules.forEach((moduleFunc) => {
-    setTimeout(() => {
-      moduleFunc();
-    }, delay);
-    delay += interval;
-  });
+// ====== Auto-run Timer (optional) ======
+function autoRunModules(intervalSeconds = 30) {
+  runSequence(); // run immediately
+  setInterval(runSequence, intervalSeconds * 1000);
 }
