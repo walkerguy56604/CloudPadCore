@@ -51,8 +51,22 @@ function runSequence() {
   });
 }
 
-// ====== Auto-run Timer (optional) ======
+// ====== Auto-run Timer (improved) ======
+let autoRunIntervalId = null;
+
 function autoRunModules(intervalSeconds = 30) {
-  runSequence(); // run immediately
-  setInterval(runSequence, intervalSeconds * 1000);
+  // Run immediately once
+  runSequence();
+
+  // Clear any previous interval
+  if (autoRunIntervalId) clearInterval(autoRunIntervalId);
+
+  // Start new interval
+  autoRunIntervalId = setInterval(runSequence, intervalSeconds * 1000);
+}
+
+function startAutoRun() {
+  const intervalSeconds = 30;
+  log(`Auto-run timer started: running modules every ${intervalSeconds} seconds.`);
+  autoRunModules(intervalSeconds);
 }
