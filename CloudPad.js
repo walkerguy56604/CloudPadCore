@@ -24,3 +24,10 @@ function startAutoRunTimer() {
     }
   }, 1000); // update every second
 }
+
+<button onclick="launchNoVNC()">Launch noVNC Desktop</button>
+function launchNoVNC() {
+  // Replace the URL below with your Codespaces public noVNC URL
+  const noVNCUrl = "https://<your-codespace-id>-6080.githubpreview.dev/vnc.html";
+  window.open(noVNCUrl, "_blank"); // opens in a new browser tab
+}
