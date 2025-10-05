@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CloudPad Interactive</title>
+  <style>
+    #output {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      height: 150px;
+      overflow-y: auto;
+      font-family: monospace;
+      background: #f9f9f9;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>CloudPad Modules</h1>
+
+  <button onclick="clipboardAssistant()">Run Clipboard Assistant</button>
+  <button onclick="cloudLauncher()">Run Cloud Launcher</button>
+  <button onclick="shareSheetUtility()">Run Share Sheet Utility</button>
+  <button onclick="timedSnapshotTool()">Run Timed Snapshot Tool</button>
+  <button onclick="runSequence()">Run All Modules in Sequence</button>
+  <button onclick="startAutoRun()">Start Auto-Run Timer</button>
+  <button onclick="startAutoRun()">Start Auto-Run Timer</button>
+  <button onclick="clearOutput()">Clear Output</button>
+
+  <div id="output">Module output will appear here...</div>
+
+  <script src="cloudpad.js"></script>
+  <script>
+    // Button to start auto-run without using console
+    function startAutoRun() {
+      const intervalSeconds = 30; // change this if you want a different timer
+      log(`Auto-run timer started: running modules every ${intervalSeconds} seconds.`);
+      autoRunModules(intervalSeconds);
+    }
+  </script>
+</body>
+</html>
+<button onclick="launchNoVNC()">Launch noVNC Desktop</button>
+
+
+Test commit for workflow #2
